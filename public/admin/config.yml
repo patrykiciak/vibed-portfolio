@@ -1,0 +1,28 @@
+backend:
+  name: github
+  repo: patrykiciak/vibed-portfolio
+  branch: master
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
+
+site_url: https://patrykiciak.github.io/vibed-portfolio
+display_url: https://patrykiciak.github.io/vibed-portfolio
+
+media_folder: "public/images/projects"
+public_folder: "/vibed-portfolio/images/projects"
+
+collections:
+  - name: "projects"
+    label: "Projects"
+    folder: "src/content/projects"
+    create: true
+    slug: "{{slug}}"
+    sortable_fields: ["order", "title"]
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Tags", name: "tags", widget: "list", allow_add: true }
+      - { label: "Live URL", name: "liveUrl", widget: "string", required: false }
+      - { label: "Repository URL", name: "repoUrl", widget: "string", required: false }
+      - { label: "Display Order", name: "order", widget: "number", default: 0, hint: "Lower numbers appear first" }

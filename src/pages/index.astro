@@ -4,6 +4,20 @@ import Hero from '../components/Hero.astro';
 import About from '../components/About.astro';
 import Projects from '../components/Projects.astro';
 import Contact from '../components/Contact.astro';
+import { getCollection } from 'astro:content';
+
+// Fetch projects from content collection (managed by CMS)
+const projectEntries = await getCollection('projects');
+const projects = projectEntries
+  .sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0))
+  .map(entry => ({
+    title: entry.data.title,
+    description: entry.data.description,
+    tags: entry.data.tags,
+    liveUrl: entry.data.liveUrl,
+    repoUrl: entry.data.repoUrl,
+    image: entry.data.image?.src,
+  }));
 
 // Edit this data to personalize your portfolio
 const siteData = {
@@ -21,28 +35,6 @@ const siteData = {
     "Git & GitHub",
     "REST APIs"
   ],
-  projects: [
-    {
-      title: "Project One",
-      description: "A web application that helps users track their daily habits and visualize their progress over time.",
-      tags: ["React", "Node.js", "MongoDB"],
-      liveUrl: "https://example.com",
-      repoUrl: "https://github.com"
-    },
-    {
-      title: "Project Two",
-      description: "An e-commerce platform with real-time inventory management and seamless payment integration.",
-      tags: ["Next.js", "Stripe", "PostgreSQL"],
-      liveUrl: "https://example.com",
-      repoUrl: "https://github.com"
-    },
-    {
-      title: "Project Three",
-      description: "A collaborative task management tool with real-time updates and team communication features.",
-      tags: ["TypeScript", "Socket.io", "Redis"],
-      repoUrl: "https://github.com"
-    }
-  ],
   email: "hello@example.com"
 };
 ---
@@ -57,6 +49,6 @@ const siteData = {
     bio={siteData.bio}
     skills={siteData.skills}
   />
-  <Projects projects={siteData.projects} />
+  <Projects projects={projects} />
   <Contact email={siteData.email} />
 </Layout>
