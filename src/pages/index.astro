@@ -1,0 +1,62 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Projects from '../components/Projects.astro';
+import Contact from '../components/Contact.astro';
+
+// Edit this data to personalize your portfolio
+const siteData = {
+  name: "Your Name",
+  tagline: "I build things for the web.",
+  description: "I'm a software developer specializing in building exceptional digital experiences. Currently focused on creating accessible, human-centered products.",
+  bio: "Hello! I'm a passionate developer who loves creating things that live on the internet. My interest in web development started back when I decided to try customizing a Tumblr theme — turns out hacking together a custom reblog button taught me a lot about HTML & CSS! Fast-forward to today, and I've had the privilege of working on various projects that challenged and grew my skills.",
+  skills: [
+    "JavaScript (ES6+)",
+    "TypeScript",
+    "React",
+    "Node.js",
+    "Astro",
+    "Tailwind CSS",
+    "Git & GitHub",
+    "REST APIs"
+  ],
+  projects: [
+    {
+      title: "Project One",
+      description: "A web application that helps users track their daily habits and visualize their progress over time.",
+      tags: ["React", "Node.js", "MongoDB"],
+      liveUrl: "https://example.com",
+      repoUrl: "https://github.com"
+    },
+    {
+      title: "Project Two",
+      description: "An e-commerce platform with real-time inventory management and seamless payment integration.",
+      tags: ["Next.js", "Stripe", "PostgreSQL"],
+      liveUrl: "https://example.com",
+      repoUrl: "https://github.com"
+    },
+    {
+      title: "Project Three",
+      description: "A collaborative task management tool with real-time updates and team communication features.",
+      tags: ["TypeScript", "Socket.io", "Redis"],
+      repoUrl: "https://github.com"
+    }
+  ],
+  email: "hello@example.com"
+};
+---
+
+<Layout title={`${siteData.name} | Portfolio`}>
+  <Hero
+    name={siteData.name}
+    tagline={siteData.tagline}
+    description={siteData.description}
+  />
+  <About
+    bio={siteData.bio}
+    skills={siteData.skills}
+  />
+  <Projects projects={siteData.projects} />
+  <Contact email={siteData.email} />
+</Layout>

@@ -1,0 +1,79 @@
+---
+interface Props {
+  bio: string;
+  skills: string[];
+}
+
+const { bio, skills } = Astro.props;
+---
+
+<section id="about" class="about">
+  <div class="container">
+    <h2>About Me</h2>
+    <div class="about-content">
+      <div class="about-text">
+        <p>{bio}</p>
+      </div>
+      <div class="skills">
+        <h3>Technologies I work with</h3>
+        <ul class="skills-list">
+          {skills.map(skill => (
+            <li>{skill}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    background-color: var(--color-bg-secondary);
+  }
+
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--color-text-muted);
+    font-size: 1.1rem;
+    line-height: 1.8;
+  }
+
+  .skills h3 {
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text);
+  }
+
+  .skills-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    list-style: none;
+  }
+
+  .skills-list li {
+    color: var(--color-text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .skills-list li::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 768px) {
+    .about-content {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

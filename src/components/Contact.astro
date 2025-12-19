@@ -1,0 +1,33 @@
+---
+interface Props {
+  email: string;
+  message?: string;
+}
+
+const { email, message = "I'm currently open to new opportunities. Whether you have a question or just want to say hi, feel free to reach out!" } = Astro.props;
+---
+
+<section id="contact" class="contact">
+  <div class="container contact-content">
+    <h2>Get In Touch</h2>
+    <p class="contact-message">{message}</p>
+    <a href={`mailto:${email}`} class="btn">Say Hello</a>
+  </div>
+</section>
+
+<style>
+  .contact {
+    text-align: center;
+    background-color: var(--color-bg-secondary);
+  }
+
+  .contact-content {
+    max-width: 600px;
+  }
+
+  .contact-message {
+    color: var(--color-text-muted);
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-md);
+  }
+</style>

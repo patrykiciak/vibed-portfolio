@@ -1,0 +1,65 @@
+---
+interface Props {
+  name: string;
+  tagline: string;
+  description: string;
+}
+
+const { name, tagline, description } = Astro.props;
+---
+
+<section id="home" class="hero">
+  <div class="container hero-content">
+    <p class="greeting">Hi, my name is</p>
+    <h1 class="name">{name}</h1>
+    <h2 class="tagline">{tagline}</h2>
+    <p class="description">{description}</p>
+    <div class="cta-buttons">
+      <a href="#projects" class="btn">View My Work</a>
+      <a href="#contact" class="btn btn-outline">Get In Touch</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 70px;
+  }
+
+  .hero-content {
+    max-width: 800px;
+  }
+
+  .greeting {
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .name {
+    color: var(--color-text);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .tagline {
+    color: var(--color-text-muted);
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .description {
+    color: var(--color-text-muted);
+    max-width: 540px;
+    margin-bottom: var(--spacing-lg);
+    font-size: 1.1rem;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+</style>
