@@ -4,6 +4,7 @@ backend:
   branch: master
   base_url: https://api.netlify.com
   auth_endpoint: auth
+  site_domain: bberkauth.netlify.app
 
 site_url: https://patrykiciak.github.io/vibed-portfolio
 display_url: https://patrykiciak.github.io/vibed-portfolio
